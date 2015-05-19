@@ -1,0 +1,9 @@
+files/server_test.crt
+files/server_test.pem
+pkg/
+pkg/
+Gemfile.lock
+spec/fixtures/modules
+spec/fixtures/manifests
+vendor
+.ruby-version

@@ -9,3 +9,7 @@ include apt::backports
 Class['apt::update'] -> Package <||>
 
 host { 'vip.local': ip => '127.0.0.1' }
+
+package { ['git']:
+	ensure => present,
+}

@@ -21,6 +21,14 @@ wp::site { '/var/www':
 	admin_user     => 'wordpress',
 	admin_password => 'wordpress',
 	require        => Mysql::Db['wordpress']
+} ->
+exec { '/usr/bin/wp --allow-root plugin delete hello':
+        cwd     => '/var/www',
+        user    => 'root',
+} ->
+exec { '/usr/bin/wp --allow-root plugin delete akismet':
+        cwd     => '/var/www',
+        user    => 'root'
 }
 
 # TODO: Update to latest stable

@@ -15,6 +15,10 @@ exec { '/usr/bin/wp --allow-root core config --dbname=wordpress --dbuser=wordpre
 	creates => '/var/www/wp-config.php',
 	user    => 'root',
 } ->
+exec { 'find /var/www -not -path "*wp-content/themes*" -not -path "*wp-content/plugins*" -print0 | xargs -0 /bin/chown www-data:www-data':
+	cwd	=> '/var/www',
+	user	=> 'root',
+} ->
 wp::site { '/var/www':
 	url            => 'http://vip.local',
 	name           => 'VIP',
@@ -39,6 +43,5 @@ file { '/var/www':
 	ensure  => 'directory',
 	owner   => 'www-data',
 	group   => 'www-data',
-	recurse => true,
 }
 

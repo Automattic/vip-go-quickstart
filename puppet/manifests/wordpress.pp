@@ -5,7 +5,7 @@ exec { '/usr/bin/wp --allow-root core download --path="/var/www"':
 	user    => 'root',
 } ->
 exec { 'git clone mu-plugins':
-	command => 'git clone https://github.com/wpcomvip/mu-plugins.git mu-plugins',
+	command => 'git clone https://github.com/Automattic/vip-mu-plugins-public.git mu-plugins',
 	cwd     => '/var/www/wp-content',
 	creates => '/var/www/wp-content/mu-plugins',
 	require => Package['git'],

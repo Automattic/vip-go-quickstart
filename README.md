@@ -48,7 +48,7 @@ The root directory for WordPress instalation on the guest machine is in `/var/ww
 ```
 vagrant up
 vagrant ssh
-cd `/var/www`
+cd /var/www
 ```
 
 ## Viewing logs

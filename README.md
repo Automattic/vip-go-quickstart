@@ -35,7 +35,10 @@ Now you can navigate to [vip.local](http://vip.local) in your browser and you sh
 
 ## Entering WordPress administration
 
-Once you are able to view the site via browser, you can also visit [vip.local/wp-admin](http://vip.local/wp-admin) and log in usign `wordpress` as your username and `wordpress` as your password.
+Once you are able to view the site via browser, you can also visit [vip.local/wp-admin](http://vip.local/wp-admin) and log in using following credentials:
+
+user: `wordpress`
+password: `wordpress`
 
 ## Developing themes and plugins
 

@@ -11,8 +11,8 @@ Vagrant.configure(2) do |config|
   is_windows = RUBY_PLATFORM.downcase.include?("w32");
 
   config.vm.synced_folder ".", "/vagrant", disabled: true
-  config.vm.synced_folder "./themes", "/var/www/wp-content/themes", nfs: !is_windows, create: true
-  config.vm.synced_folder "./plugins", "/var/www/wp-content/plugins", nfs: !is_windows, create: true
+  config.vm.synced_folder "./site/themes", "/var/www/wp-content/themes", create: true
+  config.vm.synced_folder "./site/plugins", "/var/www/wp-content/plugins", create: true
 
   config.vm.provider "virtualbox" do |v|
     # Use 1GB of memory

@@ -11,17 +11,17 @@ VIP Go Quickstart is a local development environment for developers creating and
 ## Installation
 
 1. Clone this repository to your local machine
-2. Move to VIP Go Quickstart directory
-3. Start the Vagrant
+1. Move to VIP Go Quickstart directory
+1. Clone your development repo, which should follow the same structure as [vip-skeleton](https://github.com/Automattic/vip-skeleton) into a `site` directory
+1. Start the Vagrant with `vagrant up`
 
 ```
 cd ~
 git clone https://github.com/wpcomvip/qsv2.git vip-go-qs
 cd vip-go-qs
+git clone git@github.com:automattic/vip-skeleton.git site
 vagrant up
 ``` 
-
-You'll be prompted for your local machine (aka the “host machine”) password during the booting process of Vagrant as an NFS filesystem is being set up. The NFS filesystem is used for sharing files in `wp-content/themes` and `wp-content/plugins` to `~/vip-quickstart/themes` and `~/vip-quickstart/plugins` respectively. You can access these directories to easily develop from your host machine using your favorite tools, IDE, etc.
 
 ## Viewing your WordPress site
 
@@ -43,7 +43,7 @@ password: `wordpress`
 
 ## Developing themes and plugins
 
-There are two shared folders: `~/vip-quickstart/themes` and `~/vip-quickstart/plugins` which are accessible from both the host and guest (i.e. the Vagrant VM, not the host) machines. All changes are automatically mirrored between the two (host and guest) systems, which means that you can edit files on either system and see the changes live on `vip.local` site.
+There are two shared folders: `~/vip-quickstart/site/themes` and `~/vip-quickstart/site/plugins` which are accessible from both the host and guest (i.e. the Vagrant VM, not the host) machines. All changes are automatically mirrored between the two (host and guest) systems, which means that you can edit files on either system and see the changes live on `vip.local` site.
 
 Those folders are mounted to `/var/www/wp-content/themes` and `/var/www/wp-content/plugins` on the guest machine.
 

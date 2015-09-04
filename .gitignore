@@ -1,1 +1,4 @@
 .vagrant
+
+# The 'skeleton' repo will be cloned into the site dir for development
+/site

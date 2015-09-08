@@ -6,10 +6,6 @@ Vagrant.configure(2) do |config|
   config.vm.hostname = "vip.local"
   config.vm.network :private_network, ip: "10.86.73.80"
 
-# define is_windows used for determinig whether we should or not use nfs
-# todo: use samba for windows?
-  is_windows = RUBY_PLATFORM.downcase.include?("w32");
-
   config.vm.synced_folder ".", "/vagrant", disabled: true
   config.vm.synced_folder "./site/images", "/var/www/wp-content/images", create: true
   config.vm.synced_folder "./site/themes", "/var/www/wp-content/themes", create: true

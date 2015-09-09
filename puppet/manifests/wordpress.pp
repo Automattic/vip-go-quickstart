@@ -20,7 +20,7 @@ exec { 'find /var/www -not -path "*wp-content/themes*" -not -path "*wp-content/p
 	user	=> 'root',
 } ->
 wp::site { '/var/www':
-	url            => 'http://vip.local',
+	url            => "http://${quickstart_domain}",
 	name           => 'VIP',
 	admin_user     => 'wordpress',
 	admin_password => 'wordpress',

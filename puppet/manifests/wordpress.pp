@@ -1,4 +1,4 @@
-# Download WordPRess
+# Download WordPRess - this will just fail if WP is already installed
 exec { 'wp_core_download':
     command => '/usr/bin/wp --allow-root core download --path="/var/www"',
 	cwd     => '/var/www',
@@ -7,7 +7,7 @@ exec { 'wp_core_download':
 	user    => 'root',
 } ->
 
-// Get our MU Plugins
+# Get our MU Plugins
 exec { 'git clone mu-plugins':
 	command => 'git clone https://github.com/Automattic/vip-mu-plugins-public.git mu-plugins',
 	cwd     => '/var/www/wp-content',
@@ -35,8 +35,8 @@ PHP',
 
 # Set the correct owner/group for WP core files
 exec { 'chown':
-    command: 'find /var/www -not -path "*wp-content/themes*" -not -path "*wp-content/plugins*" -print0 | xargs -0 /bin/chown www-data:www-data',
-	cwd	=> '/var/www',
+    command => 'find /var/www -not -path "*wp-content/themes*" -not -path "*wp-content/plugins*" -print0 | xargs -0 /bin/chown www-data:www-data',
+	cwd	    => '/var/www',
 	user	=> 'root',
 } ->
 
@@ -61,7 +61,13 @@ exec { 'remove_akismet':
     user    => 'root'
 }
 
-# TODO: Update to latest stable
+# Update WP to the latest stable. Will fail nicely if we're already on the latest version
+exec { 'update_wordpress':
+    command => '/usr/bin/wp --allow-root --quiet core update',
+    cwd     => '/var/www',
+    user    => 'root',
+}
+
 # TODO: Add debug plugins
 
 # Check the owner/group permissions are correct

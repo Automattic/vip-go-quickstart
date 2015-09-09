@@ -10,11 +10,25 @@ exec { 'git clone mu-plugins':
 	creates => '/var/www/wp-content/mu-plugins',
 	require => Package['git'],
 } ->
-exec { '/usr/bin/wp --allow-root core config --dbname=wordpress --dbuser=wordpress --dbpass=wordpress':
+
+# Create the core config
+exec { 'wp_core_config':
+    command => '/usr/bin/wp --allow-root core config --dbname=wordpress --dbuser=wordpress --dbpass=wordpress --extra-php <<PHP
+define( "DISALLOW_FILE_MODS", true );
+
+if ( file_exists( __DIR__ . "/wp-content/vip-config/vip-config.php" ) )
+	require_once( __DIR__ . "/wp-content/vip-config/vip-config.php" );
+
+if ( ! defined( "ABSPATH" ) )
+	define( "ABSPATH", dirname( __FILE__ ) . "/" );
+
+PHP',
+    path    => '/usr/bin/',
 	cwd     => '/var/www',
 	creates => '/var/www/wp-config.php',
 	user    => 'root',
 } ->
+
 exec { 'find /var/www -not -path "*wp-content/themes*" -not -path "*wp-content/plugins*" -print0 | xargs -0 /bin/chown www-data:www-data':
 	cwd	=> '/var/www',
 	user	=> 'root',

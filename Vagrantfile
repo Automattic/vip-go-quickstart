@@ -7,8 +7,8 @@ Vagrant.configure(2) do |config|
   config.vm.hostname = File.basename( File.dirname(__FILE__) ) + ".vip.local"
   config.vm.network "private_network", type: "dhcp"
 
-# define is_windows used for determinig whether we should or not use nfs
-# todo: use samba for windows?
+  # define is_windows used for determining whether we should or not use nfs
+  # todo: use samba for windows?
   is_windows = RUBY_PLATFORM.downcase.include?("w32");
 
   config.vm.synced_folder ".", "/vagrant", disabled: true

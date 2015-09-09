@@ -62,7 +62,6 @@ exec { 'remove_akismet':
 }
 
 # TODO: Update to latest stable
-# TODO: Add mu-plugins
 # TODO: Add debug plugins
 
 # Check the owner/group permissions are correct

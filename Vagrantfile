@@ -4,7 +4,7 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
   config.vm.hostname = "vip.local"
-  config.vm.network :private_network, ip: "10.86.73.80"
+  config.vm.network "private_network", type: "dhcp"
 
 # define is_windows used for determinig whether we should or not use nfs
 # todo: use samba for windows?

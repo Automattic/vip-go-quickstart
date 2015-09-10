@@ -68,7 +68,16 @@ exec { 'update_wordpress':
     user    => 'root',
 }
 
-# TODO: Add debug plugins
+# Add debug plugins and activate
+# TODO: Use an array and loop instead of this chaining nonsense
+exec { 'debug_plugins':
+    command => '/usr/bin/wp --allow-root plugin install log-deprecated-notices --activate &&
+    /usr/bin/wp --allow-root plugin install monster-widget --activate &&
+    /usr/bin/wp --allow-root plugin install query-monitor --activate &&
+    /usr/bin/wp --allow-root plugin install user-switching --activate',
+    cwd => '/var/www',
+    user => 'root',
+}
 
 # Check the owner/group permissions are correct
 file { '/var/www':

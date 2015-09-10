@@ -4,7 +4,7 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
   # todo: check the resultant hostname is valid, e.g. no spaces
-  config.vm.hostname = File.basename( File.dirname(__FILE__) ) + "-vip.local"
+  config.vm.hostname = File.basename( File.dirname(__FILE__) ) + "-vip-go.local"
   config.vm.network "private_network", type: "dhcp"
 
   # define is_windows used for determining whether we should or not use nfs

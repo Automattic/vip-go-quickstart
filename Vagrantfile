@@ -3,14 +3,15 @@
 
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
-  # todo: check the resultant hostname is valid, e.g. no spaces
+  # TODO: check the resultant hostname is valid, e.g. no spaces
   config.vm.hostname = File.basename( File.dirname(__FILE__) ) + "-vip-go.local"
   config.vm.network "private_network", type: "dhcp"
 
-  # define is_windows used for determining whether we should or not use nfs
-  # todo: use samba for windows?
+  # Define is_windows used for determining whether we should or not use NFS
   is_windows = RUBY_PLATFORM.downcase.include?("w32");
+  # TODO: How to identify Ubuntu? 
 
+  # TODO: use Samba for Windows?
   config.vm.synced_folder ".", "/vagrant", disabled: true
   config.vm.synced_folder "./themes", "/var/www/wp-content/themes", nfs: !is_windows, create: true
   config.vm.synced_folder "./plugins", "/var/www/wp-content/plugins", nfs: !is_windows, create: true

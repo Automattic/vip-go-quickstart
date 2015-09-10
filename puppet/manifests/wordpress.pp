@@ -15,6 +15,13 @@ exec { 'git clone mu-plugins':
 	require => Package['git'],
 } ->
 
+# Ensure MU plugins are up to date
+exec { 'git pull mu-plugins':
+    command => 'git pull',
+    cwd     => '/var/www/wp-content/mu-plugins',
+    require => Package['git'],
+}
+
 # Create the core config
 exec { 'wp_core_config':
     command => '/usr/bin/wp --allow-root core config --dbname=wordpress --dbuser=wordpress --dbpass=wordpress --extra-php <<PHP

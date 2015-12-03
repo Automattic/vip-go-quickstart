@@ -10,6 +10,10 @@ VIP Go Quickstart is a local development environment for developers creating and
 
 ## Installation
 
+0. Networking requires Zeroconf:
+	* OS X: You already have Zeroconf, nothing to do here!
+	* Windows: If you have iTunes, you already have this. Otherwise, you need to install [Bonjour](http://support.apple.com/kb/DL999)
+	* Ubuntu: Run the following command `sudo apt-get install avahi-dnsconfd`
 1. Clone this repository to your local machine
 2. Move to VIP Go Quickstart directory
 3. Start the Vagrant

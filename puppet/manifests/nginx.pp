@@ -2,6 +2,7 @@ class { nginx: }
 
 nginx::resource::vhost { 'vip.local':
 	www_root             => '/var/www',
+	server_name          => [$quickstart_domain],
 	index_files          => ['index.php'],
 	raw_prepend          => 'try_files $uri $uri/ /index.php;',
 	use_default_location => false,

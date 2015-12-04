@@ -4,7 +4,7 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
   # TODO: check the resultant hostname is valid, e.g. no spaces
-  config.vm.hostname = ENV['VIP_GO_URL']
+  config.vm.hostname = 'vip-go.local'
   config.vm.network "private_network", type: "dhcp"
 
   config.vm.synced_folder ".", "/vagrant", disabled: true
@@ -20,8 +20,9 @@ Vagrant.configure(2) do |config|
     puppet.manifests_path = "puppet"
     puppet.module_path = "puppet/modules"
     puppet.facter = {
-    	"quickstart_domain" => config.vm.hostname,
-    	"client_git_repo" => ENV['VIP_GO_CLIENT_GIT']
+        "hostname"          => config.vm.hostname,
+        "client"            => ENV['VIP_GO_CLIENT'],
+        "client_git_repo"   => ENV['VIP_GO_CLIENT_GIT']
     }
   end
 end

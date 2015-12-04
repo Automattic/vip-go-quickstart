@@ -14,7 +14,7 @@ exec { '[ -f wp-config.php ] && rm wp-config.php || echo 0' :
 	cwd => '/var/www',
 	user => 'root',
 } ->
-exec { "/usr/bin/wp --allow-root core config --dbname=${quickstart_domain} --dbuser=wordpress --dbpass=wordpress":
+exec { "/usr/bin/wp --allow-root core config --dbname=${client} --dbuser=wordpress --dbpass=wordpress":
 	cwd     => '/var/www',
 	creates => '/var/www/wp-config.php',
 	user    => 'root',
@@ -24,11 +24,11 @@ exec { 'find /var/www -not -path "*wp-content/themes*" -not -path "*wp-content/p
 	user	=> 'root',
 } ->
 wp::site { '/var/www':
-	url            => "http://${quickstart_domain}",
+	url            => "http://${hostname}",
 	name           => 'VIP',
 	admin_user     => 'wordpress',
 	admin_password => 'wordpress',
-	require        => Mysql::Db["${quickstart_domain}"]
+	require        => Mysql::Db["${client}"]
 } ->
 exec { '/usr/bin/wp --allow-root plugin delete hello':
         cwd     => '/var/www',

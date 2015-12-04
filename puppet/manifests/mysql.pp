@@ -1,6 +1,6 @@
 class { 'mysql::server': }
 
-mysql::db { $quickstart_domain:
+mysql::db { $client:
 	user     => 'wordpress',
 	password => 'wordpress',
 }

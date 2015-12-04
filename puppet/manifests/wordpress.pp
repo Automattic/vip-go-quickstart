@@ -10,7 +10,11 @@ exec { 'git clone mu-plugins':
 	creates => '/var/www/wp-content/mu-plugins',
 	require => Package['git'],
 } ->
-exec { '/usr/bin/wp --allow-root core config --dbname=wordpress --dbuser=wordpress --dbpass=wordpress':
+exec { '[ -f wp-config.php ] && rm wp-config.php || echo 0' :
+	cwd => '/var/www',
+	user => 'root',
+} ->
+exec { "/usr/bin/wp --allow-root core config --dbname=${quickstart_domain} --dbuser=wordpress --dbpass=wordpress":
 	cwd     => '/var/www',
 	creates => '/var/www/wp-config.php',
 	user    => 'root',
@@ -24,7 +28,7 @@ wp::site { '/var/www':
 	name           => 'VIP',
 	admin_user     => 'wordpress',
 	admin_password => 'wordpress',
-	require        => Mysql::Db['wordpress']
+	require        => Mysql::Db["${quickstart_domain}"]
 } ->
 exec { '/usr/bin/wp --allow-root plugin delete hello':
         cwd     => '/var/www',

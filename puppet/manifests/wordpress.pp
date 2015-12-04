@@ -19,7 +19,7 @@ exec { "/usr/bin/wp --allow-root core config --dbname=${client} --dbuser=wordpre
 	creates => '/var/www/wp-config.php',
 	user    => 'root',
 } ->
-exec { 'find /var/www -not -path "*wp-content/themes*" -not -path "*wp-content/plugins*" -print0 | xargs -0 /bin/chown www-data:www-data':
+exec { 'find /var/www -not -path "*wp-content/languages*" -not -path "*wp-content/themes*" -not -path "*wp-content/plugins*" -print0 | xargs -0 /bin/chown www-data:www-data':
 	cwd	=> '/var/www',
 	user	=> 'root',
 } ->
@@ -29,14 +29,6 @@ wp::site { '/var/www':
 	admin_user     => 'wordpress',
 	admin_password => 'wordpress',
 	require        => Mysql::Db["${client}"]
-} ->
-exec { '/usr/bin/wp --allow-root plugin delete hello':
-        cwd     => '/var/www',
-        user    => 'root',
-} ->
-exec { '/usr/bin/wp --allow-root plugin delete akismet':
-        cwd     => '/var/www',
-        user    => 'root'
 } ->
 wp::rewrite { '/%post_id%/%postname%/':
 	location => '/var/www',
@@ -59,6 +51,14 @@ wp::option { 'timezone_string':
 	location => '/var/www',
 	require => Wp::Site['/var/www'],
 	ensure => 'equal'
+} ->
+exec { '/usr/bin/wp --allow-root plugin delete hello':
+	cwd     => '/var/www',
+	user    => 'root',
+} ->
+exec { '/usr/bin/wp --allow-root plugin delete akismet':
+	cwd     => '/var/www',
+	user    => 'root'
 }
 
 # TODO: Update to latest stable

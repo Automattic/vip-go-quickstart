@@ -37,6 +37,28 @@ exec { '/usr/bin/wp --allow-root plugin delete hello':
 exec { '/usr/bin/wp --allow-root plugin delete akismet':
         cwd     => '/var/www',
         user    => 'root'
+} ->
+wp::rewrite { '/%post_id%/%postname%/':
+	location => '/var/www',
+	require => Wp::Site['/var/www']
+} ->
+wp::option { 'blogname':
+	value => $client,
+	location => '/var/www',
+	require => Wp::Site['/var/www'],
+	ensure => 'equal'
+} ->
+wp::option { 'blogdescription':
+	value => $client_git_repo,
+	location => '/var/www',
+	require => Wp::Site['/var/www'],
+	ensure => 'equal'
+} ->
+wp::option { 'timezone_string':
+	value => 'America/New_York',
+	location => '/var/www',
+	require => Wp::Site['/var/www'],
+	ensure => 'equal'
 }
 
 # TODO: Update to latest stable

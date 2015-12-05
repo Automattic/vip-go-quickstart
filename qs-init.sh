@@ -4,7 +4,7 @@
 printf '\nPreparing to initialize the VIP Go Quickstart environment...\n\n'
 
 # Parse args and set necessary envars
-printf 'Parsing arguments...\n\n'
+printf '1) Parsing arguments...\n\n'
 client=''
 client_git_repo=''
 needs_to_up=0
@@ -61,7 +61,7 @@ printf "CLIENT: %s\nGIT REMOTE: %s\nVAGRANT UP REQUESTED: %d\n\n" "$client" "$cl
 
 # Load client's custom code into VM's NFS shares
 # Can't simply delete `go-client-repo` and replace it, as removing the synced folders sends Vagrant into a tizzy
-printf 'Loading new client code...\n\n'
+printf '2) Loading new client code...\n\n'
 rm -rf go-client-repo-new/
 rm -rf go-client-repo/languages/*
 rm -rf go-client-repo/plugins/*
@@ -78,12 +78,13 @@ fi
 
 # Provision the VM
 if [ $needs_to_up == 1 ]; then
-    printf '\nStarting to provision VM. vagrant up can take some time...\n\n'
+    printf '\n3) Starting to provision VM. vagrant up can take some time...\n\n'
     vagrant up
 else
-    printf '\nStarting to re-provision VM...\n\n'
+    printf '\n3) Starting to re-provision VM...\n\n'
     vagrant provision
 fi
 
 # Done!
-printf '\nYour VIP Go Quickstart is ready at http://vip-go.local/.\n'
+printf '\n4) DONE!\nYour VIP Go Quickstart is ready at http://vip-go.local/\n'
+printf 'Synchronized git checkout is at ./go-client-code/\n'

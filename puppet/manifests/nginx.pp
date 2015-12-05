@@ -10,7 +10,7 @@ nginx::resource::vhost { $client:
 
 nginx::resource::location { 'php':
 	location => '~ \.php$',
-	vhost    => "${client}",
+	vhost    => $client,
 	fastcgi  => 'unix:/var/run/php5-fpm.sock',
 	fastcgi_param      => {
 		'SCRIPT_FILENAME' => '$document_root$fastcgi_script_name',
@@ -18,7 +18,7 @@ nginx::resource::location { 'php':
 }
 
 nginx::resource::location { '/_static/':
-	vhost   => "${client}",
+	vhost   => $client,
 	fastcgi => 'unix:/var/run/php5-fpm.sock',
 	fastcgi_param => {
 		'SCRIPT_FILENAME' => '$document_root/wp-content/mu-plugins/http-concat/ngx-http-concat.php',

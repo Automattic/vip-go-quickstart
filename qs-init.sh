@@ -1,5 +1,10 @@
 #!/bin/sh
 
+##
+## USAGE: ./qs-init.sh --client UNIQUE_SLUG --git-repo GIT_REMOTE [--up]
+## Include `--up` when setting up a fresh instance of this VM.
+##
+
 # Kicking things off!
 printf '\nPreparing to initialize the VIP Go Quickstart environment...\n\n'
 

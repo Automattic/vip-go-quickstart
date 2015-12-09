@@ -2,7 +2,7 @@ class { nginx: }
 
 nginx::resource::vhost { $client:
 	www_root             => '/var/www',
-	server_name          => [$hostname],
+	server_name          => [$fqdn],
 	index_files          => ['index.php'],
 	raw_prepend          => 'try_files $uri $uri/ /index.php;',
 	use_default_location => false,

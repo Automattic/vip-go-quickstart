@@ -91,5 +91,5 @@ else
 fi
 
 # Done!
-printf '\n4) DONE!\nYour VIP Go Quickstart is ready at http://vip-go.local/\n'
+printf '\n4) DONE!\nYour VIP Go Quickstart is ready at http://go-vip.local/\n'
 printf 'Synchronized git checkout is at ./go-client-code/\n'

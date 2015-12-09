@@ -24,7 +24,7 @@ exec { 'find /var/www -not -path "*wp-content/languages*" -not -path "*wp-conten
 	user	=> 'root',
 } ->
 wp::site { '/var/www':
-	url            => "http://${hostname}",
+	url            => "http://${fqdn}",
 	name           => 'VIP',
 	admin_user     => 'wordpress',
 	admin_password => 'wordpress',

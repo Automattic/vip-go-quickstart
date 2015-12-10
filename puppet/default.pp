@@ -8,8 +8,8 @@ include apt::backports
 
 Class['apt::update'] -> Package <||>
 
-host { 'vip.local': 
-    name => $quickstart_domain,
+host { 'vip-go':
+    name => $hostname,
     ensure => 'present',
     ip => '127.0.0.1',
 }

@@ -1,6 +1,6 @@
 class { 'mysql::server': }
 
-mysql::db { 'wordpress':
+mysql::db { $client:
 	user     => 'wordpress',
 	password => 'wordpress',
 }

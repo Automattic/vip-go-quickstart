@@ -43,6 +43,7 @@ while :; do
             if [ -n "$2" ]; then
                 rm data/import.xml
                 cp $2 data/import.xml
+                printf 'CONTENT: Using specified WXR to initialize environment.\n\n'
                 wxr=1
                 shift 2
                 continue
@@ -72,6 +73,7 @@ fi
 
 if [ "$wxr" == 0 ]; then
     git checkout -- data/import.xml
+    printf 'CONTENT: Using default WXR to initialize environment.\n\n'
 fi
 
 export VIP_GO_CLIENT=$client

@@ -12,6 +12,7 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder "./go-client-repo/plugins", "/var/www/wp-content/plugins", nfs: true, create: true
   config.vm.synced_folder "./go-client-repo/languages", "/var/www/wp-content/languages", nfs: true, create: false
   config.vm.synced_folder "./go-client-repo/vip-config", "/var/vip-config", nfs: true, create: false
+  config.vm.provision "file", source: "./data/import.xml", destination: "/tmp/import.xml"
 
   config.vm.provider "virtualbox" do |v|
     # Use 1GB of memory

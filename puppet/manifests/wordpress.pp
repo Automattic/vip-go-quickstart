@@ -59,6 +59,22 @@ exec { '/usr/bin/wp --allow-root plugin delete hello':
 exec { '/usr/bin/wp --allow-root plugin delete akismet':
 	cwd     => '/var/www',
 	user    => 'root'
+} ->
+# TODO: Activate theme before import
+exec { "/usr/bin/wp --allow-root post delete $(/usr/bin/wp --allow-root post list --post_type='post' --format=ids)":
+	require => Wp::Site['/var/www'],
+	cwd     => '/var/www',
+	user    => 'root'
+} ->
+exec { "/usr/bin/wp --allow-root post delete $(/usr/bin/wp --allow-root post list --post_type='page' --format=ids)":
+	require => Wp::Site['/var/www'],
+	cwd     => '/var/www',
+	user    => 'root'
+} ->
+exec { "/usr/bin/wp --allow-root import /tmp/import.xml --authors=create":
+	require => Wp::Site['/var/www'],
+	cwd     => '/var/www',
+	user    => 'root'
 }
 
 # TODO: Update to latest stable

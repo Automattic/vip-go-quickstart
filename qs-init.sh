@@ -12,6 +12,7 @@ printf '\nPreparing to initialize the VIP Go Quickstart environment...\n\n'
 printf '1) Parsing arguments...\n\n'
 client=''
 client_git_repo=''
+wxr=0
 needs_to_up=0
 
 while :; do
@@ -38,6 +39,16 @@ while :; do
             fi
             ;;
 
+        --wxr)
+            if [ -n "$2" ]; then
+                rm data/import.xml
+                cp $2 data/import.xml
+                wxr=1
+                shift 2
+                continue
+            fi
+            ;;
+
         --up)
             needs_to_up=1
             ;;
@@ -57,6 +68,10 @@ fi
 if [ -z "$client_git_repo" ]; then
     printf 'ERROR: "--git-repo" is a required argument.\n' >&2
     exit 1
+fi
+
+if [ "$wxr" == 0 ]; then
+    git checkout -- data/import.xml
 fi
 
 export VIP_GO_CLIENT=$client

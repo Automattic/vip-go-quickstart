@@ -24,7 +24,8 @@ Vagrant.configure(2) do |config|
     puppet.module_path = "puppet/modules"
     puppet.facter = {
         "client"            => ENV['VIP_GO_CLIENT'],
-        "client_git_repo"   => ENV['VIP_GO_CLIENT_GIT']
+        "client_git_repo"   => ENV['VIP_GO_CLIENT_GIT'],
+        "theme"             => ENV['VIP_GO_THEME']
     }
   end
 end

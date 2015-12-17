@@ -60,7 +60,10 @@ exec { '/usr/bin/wp --allow-root plugin delete akismet':
 	cwd     => '/var/www',
 	user    => 'root'
 } ->
-# TODO: Activate theme before import
+exec { "[ -d ${theme} ] && /usr/bin/wp --allow-root theme activate ${theme} || echo 0" :
+	cwd => '/var/www/wp-content/themes',
+	user => 'root',
+} ->
 exec { "/usr/bin/wp --allow-root post delete $(/usr/bin/wp --allow-root post list --post_type='post' --format=ids)":
 	require => Wp::Site['/var/www'],
 	cwd     => '/var/www',

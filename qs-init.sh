@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ##
-## USAGE: ./qs-init.sh --client UNIQUE_SLUG --git-repo GIT_REMOTE [--up]
+## USAGE: ./qs-init.sh --client UNIQUE_SLUG --git-repo GIT_REMOTE [--theme DIRECTORY_NAME] [--up]
 ## Include `--up` when setting up a fresh instance of this VM.
 ##
 
@@ -12,6 +12,7 @@ printf '\nPreparing to initialize the VIP Go Quickstart environment...\n\n'
 printf '1) Parsing arguments...\n\n'
 client=''
 client_git_repo=''
+theme=0
 wxr=0
 needs_to_up=0
 
@@ -50,6 +51,14 @@ while :; do
             fi
             ;;
 
+         --theme)
+            if [ -n "$2" ]; then
+                theme=$2
+                shift 2
+                continue
+            fi
+            ;;
+
         --up)
             needs_to_up=1
             ;;
@@ -78,8 +87,9 @@ fi
 
 export VIP_GO_CLIENT=$client
 export VIP_GO_CLIENT_GIT=$client_git_repo
+export VIP_GO_THEME=$theme
 
-printf "CLIENT: %s\nGIT REMOTE: %s\nVAGRANT UP REQUESTED: %d\n\n" "$client" "$client_git_repo" "$needs_to_up"
+printf "CLIENT: %s\nGIT REMOTE: %s\nTHEME: %s\nVAGRANT UP REQUESTED: %d\n\n" "$client" "$client_git_repo" "$theme" "$needs_to_up"
 
 # Load client's custom code into VM's NFS shares
 # Can't simply delete `go-client-repo` and replace it, as removing the synced folders sends Vagrant into a tizzy
@@ -91,6 +101,12 @@ rm -rf go-client-repo/themes/*
 git clone "$client_git_repo" go-client-repo-new
 cp -r go-client-repo-new/* go-client-repo
 rm -rf go-client-repo-new/
+
+# Ensure theme directory exists, otherwise exit with an error
+if [ ! -d "./go-client-repo/themes/$theme" ]; then
+    printf '\n\nERROR: Theme directory "%s" not found. Please check your entry, or omit the "--theme" argument, and try again.\n' "$theme" >&2
+    exit 1
+fi
 
 # Ensure optional languages directory exists
 # Vagrant doesn't respond well if the directory exists sometimes but not always

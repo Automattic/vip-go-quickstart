@@ -28,12 +28,18 @@ VIP Go Quickstart is a local development environment for developers creating and
 
 ```
 cd ~
-git clone https://github.com/wpcomvip/qsv2.git vip-go-qs
+git clone https://github.com/Automattic/vip-go-quickstart.git vip-go-qs
 cd vip-go-qs
 ./qs-init.sh --client UNIQUE_SLUG --git-repo GIT_REMOTE [--theme DIRECTORY_NAME] [--wxr WXR_TO_IMPORT] [--up]
 ```
 
 You'll be prompted for your local machine (aka the “host machine”) password during the booting process of Vagrant as an NFS filesystem is being set up. The NFS filesystem is used for sharing folders from the Go-structured git repository with Vagrant. During the initialization process, the provided git repository is checked out into `./go-client-repo/`. You can access this directory to easily develop from your host machine using your favorite tools, IDE, etc.
+
+## Switching between client codebases
+
+Rather than create separate Quickstart instances for every client, VIP Go's Quickstart supports easy switching between git repositories without needing to provision an entire new VM.
+
+To switch to a new codebase, simply call `qs-init.sh` again with new `--client` and `--git-repo` values, as well as any optional arguments. The optional `--up` argument is only necessary if you've never called `qs-init.sh` with it, or if you've invoked `vagrant destroy`.
 
 ## Viewing your WordPress site
 

@@ -16,30 +16,32 @@ VIP Go Quickstart is a local development environment for developers creating and
 	* Ubuntu: Run the following command `sudo apt-get install avahi-dnsconfd`
 1. Clone this repository to your local machine
 2. Move to VIP Go Quickstart directory
-3. Start the Vagrant
+3. Initialize the Vagrant using the included `qs-init.sh` script
+
+`qs-init.sh` arguments:
+
+	* --client: unique slug to distinguish this instance's database instance; alphanumeric and hyphens only
+	* --git-repo: clone URL for a Go-structured git repo, based on the [VIP Skeleton](https://github.com/Automattic/vip-skeleton) repo
+	* --theme: slug of the theme to activate during initialization
+	* --wxr: WordPress export file to import during initialization
+	* --up: call `vagrant up` to set up Vagrant for the first time; thereafter, uses `vagrant provision` for faster re-initialization
 
 ```
 cd ~
 git clone https://github.com/wpcomvip/qsv2.git vip-go-qs
 cd vip-go-qs
-vagrant up
-``` 
+./qs-init.sh --client UNIQUE_SLUG --git-repo GIT_REMOTE [--theme DIRECTORY_NAME] [--wxr WXR_TO_IMPORT] [--up]
+```
 
-You'll be prompted for your local machine (aka the “host machine”) password during the booting process of Vagrant as an NFS filesystem is being set up. The NFS filesystem is used for sharing files in `wp-content/themes` and `wp-content/plugins` to `~/vip-quickstart/themes` and `~/vip-quickstart/plugins` respectively. You can access these directories to easily develop from your host machine using your favorite tools, IDE, etc.
+You'll be prompted for your local machine (aka the “host machine”) password during the booting process of Vagrant as an NFS filesystem is being set up. The NFS filesystem is used for sharing folders from the Go-structured git repository with Vagrant. During the initialization process, the provided git repository is checked out into `./go-client-repo/`. You can access this directory to easily develop from your host machine using your favorite tools, IDE, etc.
 
 ## Viewing your WordPress site
 
-Before you'll be able to view your WordPress site, a configuration line has to be added to hosts file:
-
-```
-10.86.73.80 vip.local
-```
-
-Now you can navigate to [vip.local](http://vip.local) in your browser and you should land on a fresh WordPress site.
+Navigate to [go-vip.local](http://go-vip.local) in your browser and you should land on a fresh WordPress site.
 
 ## Entering WordPress administration
 
-Once you are able to view the site via browser, you can also visit [vip.local/wp-admin](http://vip.local/wp-admin) and log in using following credentials:
+Once you are able to view the site via browser, you can also visit [go-vip.local/wp-admin](http://go-vip.local/wp-admin) and log in using following credentials:
 
 user: `wordpress`
 

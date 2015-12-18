@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ##
-## USAGE: ./qs-init.sh --client UNIQUE_SLUG --git-repo GIT_REMOTE [--theme DIRECTORY_NAME] [--up]
+## USAGE: ./qs-init.sh --client UNIQUE_SLUG --git-repo GIT_REMOTE [--wxr WXR_TO_IMPORT] [--theme DIRECTORY_NAME] [--up]
 ## Include `--up` when setting up a fresh instance of this VM.
 ##
 

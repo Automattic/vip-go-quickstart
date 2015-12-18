@@ -91,6 +91,13 @@ export VIP_GO_THEME=$theme
 
 printf "CLIENT: %s\nGIT REMOTE: %s\nTHEME: %s\nVAGRANT UP REQUESTED: %d\n\n" "$client" "$client_git_repo" "$theme" "$needs_to_up"
 
+# Require confirmation before destructive actions that follow
+read -p "Continue (y/n)? " CONT
+if [ "$CONT" != "y" ]; then
+  printf 'Aborting at your request.\n';
+  exit 0;
+fi
+
 # Load client's custom code into VM's NFS shares
 # Can't simply delete `go-client-repo` and replace it, as removing the synced folders sends Vagrant into a tizzy
 printf '2) Loading new client code...\n\n'

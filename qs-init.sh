@@ -102,11 +102,12 @@ fi
 # Can't simply delete `go-client-repo` and replace it, as removing the synced folders sends Vagrant into a tizzy
 printf '2) Loading new client code...\n\n'
 rm -rf go-client-repo-new/
+rm -rf go-client-repo/.git/
 rm -rf go-client-repo/languages/*
 rm -rf go-client-repo/plugins/*
 rm -rf go-client-repo/themes/*
 git clone "$client_git_repo" go-client-repo-new
-cp -r go-client-repo-new/* go-client-repo
+cp -r go-client-repo-new/. go-client-repo
 rm -rf go-client-repo-new/
 
 # Ensure theme directory exists, otherwise exit with an error

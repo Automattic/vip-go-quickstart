@@ -111,7 +111,7 @@ cp -r go-client-repo-new/. go-client-repo
 rm -rf go-client-repo-new/
 
 # Ensure theme directory exists, otherwise exit with an error
-if [ ! -d "./go-client-repo/themes/$theme" ]; then
+if [ "$theme" != 0 ] && [ ! -d "./go-client-repo/themes/$theme" ]; then
     printf '\n\nERROR: Theme directory "%s" not found. Please check your entry, or omit the "--theme" argument, and try again.\n' "$theme" >&2
     exit 1
 fi

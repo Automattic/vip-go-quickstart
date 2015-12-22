@@ -20,11 +20,11 @@ VIP Go Quickstart is a local development environment for developers creating and
 
 `qs-init.sh` arguments:
 
-	* --client: unique slug to distinguish this instance's database instance; alphanumeric and hyphens only
-	* --git-repo: clone URL for a Go-structured git repo, based on the [VIP Skeleton](https://github.com/Automattic/vip-skeleton) repo
-	* --theme: slug of the theme to activate during initialization
-	* --wxr: WordPress export file to import during initialization
-	* --up: call `vagrant up` to set up Vagrant for the first time; thereafter, uses `vagrant provision` for faster re-initialization
+* `--client`: unique slug to distinguish this instance's database instance; alphanumeric and hyphens only, not a domain name for the Quickstart instance
+* `--git-repo`: clone URL for a Go-structured git repo, based on the [VIP Skeleton](https://github.com/Automattic/vip-skeleton) repo
+* `--theme`: slug of the theme to activate during initialization
+* `--wxr`: WordPress export file to import during initialization
+* `--up`: call `vagrant up` to set up Vagrant for the first time; thereafter, uses `vagrant provision` for faster re-initialization
 
 ```
 cd ~

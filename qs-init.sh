@@ -43,7 +43,7 @@ while :; do
         --wxr)
             if [ -n "$2" ]; then
                 rm data/import.xml
-                cp $2 data/import.xml
+                cp "$2" data/import.xml
                 printf 'CONTENT: Using specified WXR to initialize environment.\n\n'
                 wxr=1
                 shift 2
@@ -80,7 +80,7 @@ if [ -z "$client_git_repo" ]; then
     exit 1
 fi
 
-if [ "$wxr" == 0 ]; then
+if [ "$wxr" = 0 ]; then
     git checkout -- data/import.xml
     printf 'CONTENT: Using default WXR to initialize environment.\n\n'
 fi
@@ -123,7 +123,7 @@ if [ ! -d "./go-client-repo/languages/" ]; then
 fi
 
 # Provision the VM
-if [ $needs_to_up == 1 ]; then
+if [ $needs_to_up = 1 ]; then
     printf '\n3) Starting to provision VM. vagrant up can take some time...\n\n'
     vagrant up
 else

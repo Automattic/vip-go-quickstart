@@ -8,12 +8,18 @@ VIP Go Quickstart is a local development environment for developers creating and
 
 # How to use VIP Go Quickstart
 
-## Installation
+## Pre-requisites
 
-0. Networking requires Zeroconf:
+0. Install [Vagrant](https://www.vagrantup.com/) and [VirtualBox 4.3](https://www.virtualbox.org/wiki/Download_Old_Builds_4_3)
+	* Windows users will need to disable Hyper-V
+    * Windows 10 users will require the fix [here](https://www.virtualbox.org/ticket/14040) to get VirtualBox 4.3 working
+1. Networking requires Zeroconf:
 	* OS X: You already have Zeroconf, nothing to do here!
 	* Windows: If you have iTunes, you already have this. Otherwise, you need to install [Bonjour](http://support.apple.com/kb/DL999)
 	* Ubuntu: Run the following command `sudo apt-get install avahi-dnsconfd`
+
+## Installation
+
 1. Clone this repository to your local machine
 2. Move to VIP Go Quickstart directory
 3. Initialize the Vagrant using the included `qs-init.sh` script

@@ -41,7 +41,7 @@ wp::option { 'blogname':
 	ensure => 'equal'
 } ->
 wp::option { 'blogdescription':
-	value => $client_git_repo,
+	value => "\"${client_git_repo} ${client_git_branch}\"",
 	location => '/var/www',
 	require => Wp::Site['/var/www'],
 	ensure => 'equal'

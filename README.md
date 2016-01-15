@@ -69,11 +69,11 @@ cd /var/www
 
 ## Viewing logs
 
-The PHP log is written to `/var/log/nginx/vip.local.error.log` on the guest machine. Once you have your Vagrant running (see above), you can view the log as follows:
+The PHP log is written to `/var/log/php/error.log` on the guest machine. Once you have your Vagrant running (see above), you can view the log as follows:
 
 ```bash
 vagrant ssh
-less +F /var/log/nginx/vip.local.error.log
+less +F /var/log/php/error.log
 ```
 
 N.B. The `less +F` command and option starts following the log file in the `less` file viewer, with new lines being appended as they are written to the log. To stop following the log, i.e. to stop new lines being appended in `less`, you can type `ctrl+c`, and to start again, you can type `F`.

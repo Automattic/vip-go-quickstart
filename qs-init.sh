@@ -160,4 +160,4 @@ fi
 
 # Done!
 printf '\n4) DONE!\nYour VIP Go Quickstart is ready at http://go-vip.local/\n'
-printf 'Synchronized git checkout is at ./go-client-code/\n'
+printf 'Synchronized git checkout is at ./go-client-repo/\n'

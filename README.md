@@ -21,7 +21,8 @@ VIP Go Quickstart is a local development environment for developers creating and
 `qs-init.sh` arguments:
 
 * `--client`: unique slug to distinguish this instance's database instance; alphanumeric and hyphens only, not a domain name for the Quickstart instance
-* `--git-repo`: clone URL for a Go-structured git repo, based on the [VIP Skeleton](https://github.com/Automattic/vip-skeleton) repo
+* `--git-repo`: clone URL for a Go-structured git repository, based on the [VIP Skeleton](https://github.com/Automattic/vip-skeleton) repository
+* `--git-branch`: a branch of the Git repository, the content of the branch must be based on the [VIP Skeleton](https://github.com/Automattic/vip-skeleton) repository (optional parameter, defaults to `master`)
 * `--theme`: slug of the theme to activate during initialization
 * `--wxr`: WordPress export file to import during initialization
 * `--up`: call `vagrant up` to set up Vagrant for the first time; thereafter, uses `vagrant provision` for faster re-initialization
@@ -30,7 +31,7 @@ VIP Go Quickstart is a local development environment for developers creating and
 cd ~
 git clone https://github.com/Automattic/vip-go-quickstart.git vip-go-qs
 cd vip-go-qs
-./qs-init.sh --client UNIQUE_SLUG --git-repo GIT_REMOTE [--theme DIRECTORY_NAME] [--wxr WXR_TO_IMPORT] [--up]
+./qs-init.sh --client UNIQUE_SLUG --git-repo GIT_REMOTE --git-branch GIT_BRANCH [--theme DIRECTORY_NAME] [--wxr WXR_TO_IMPORT] [--up]
 ```
 
 You'll be prompted for your local machine (aka the “host machine”) password during the booting process of Vagrant as an NFS filesystem is being set up. The NFS filesystem is used for sharing folders from the Go-structured git repository with Vagrant. During the initialization process, the provided git repository is checked out into `./go-client-repo/`. You can access this directory to easily develop from your host machine using your favorite tools, IDE, etc.

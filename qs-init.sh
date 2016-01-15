@@ -12,6 +12,7 @@ printf '\nPreparing to initialize the VIP Go Quickstart environment...\n\n'
 printf '1) Parsing arguments...\n\n'
 client=''
 client_git_repo=''
+client_git_branch='master'
 theme=0
 wxr=0
 needs_to_up=0
@@ -37,6 +38,18 @@ while :; do
             else
                 printf 'ERROR: "--git-repo" is a required argument.\n' >&2
                 exit 1
+            fi
+            ;;
+
+        --git-branch)
+            if [ -n "$2" ]; then
+                client_git_branch=$2
+                shift 2
+                continue
+            else
+                client_git_branch="master"
+                shift 2
+                continue
             fi
             ;;
 
@@ -87,9 +100,10 @@ fi
 
 export VIP_GO_CLIENT=$client
 export VIP_GO_CLIENT_GIT=$client_git_repo
+export VIP_GO_CLIENT_GIT_BRANCH=$client_git_branch
 export VIP_GO_THEME=$theme
 
-printf "CLIENT: %s\nGIT REMOTE: %s\nTHEME: %s\nVAGRANT UP REQUESTED: %d\n\n" "$client" "$client_git_repo" "$theme" "$needs_to_up"
+printf "CLIENT: %s\nGIT REMOTE: %s\nGIT BRANCH: %s\nTHEME: %s\nVAGRANT UP REQUESTED: %d\n\n" "$client" "$client_git_repo" "$client_git_branch" "$theme" "$needs_to_up"
 
 # Require confirmation before destructive actions that follow
 read -p "Continue (y/n)? " CONT
@@ -107,6 +121,19 @@ rm -rf go-client-repo/languages/*
 rm -rf go-client-repo/plugins/*
 rm -rf go-client-repo/themes/*
 git clone "$client_git_repo" go-client-repo-new
+EXIT_CODE=$?
+if [ 0 != $EXIT_CODE ]; then
+	echo "\n\nERROR: Cloning git repository at $client_git_repo failed with the error code $EXIT_CODE."
+	exit 210
+fi
+cd go-client-repo-new
+git checkout $client_git_branch
+cd ..
+EXIT_CODE=$?
+if [ 0 != $EXIT_CODE ]; then
+	echo "\n\nERROR: Checkout out branch $client_git_branch failed with the error code $EXIT_CODE."
+	exit 220
+fi
 cp -r go-client-repo-new/. go-client-repo
 rm -rf go-client-repo-new/
 

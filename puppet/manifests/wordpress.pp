@@ -52,10 +52,6 @@ wp::option { 'timezone_string':
 	require => Wp::Site['/var/www'],
 	ensure => 'equal'
 } ->
-exec { '/usr/bin/wp --allow-root plugin delete hello':
-	cwd     => '/var/www',
-	user    => 'root',
-} ->
 exec { '/usr/bin/wp --allow-root plugin delete akismet':
 	cwd     => '/var/www',
 	user    => 'root'

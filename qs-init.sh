@@ -12,7 +12,7 @@ printf '\nPreparing to initialize the VIP Go Quickstart environment...\n\n'
 printf '1) Parsing arguments...\n\n'
 client=''
 client_git_repo=''
-client_git_branch=''
+client_git_branch='master'
 theme=0
 wxr=0
 needs_to_up=0

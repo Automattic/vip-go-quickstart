@@ -60,12 +60,12 @@ exec { "[ -d ${theme} ] && /usr/bin/wp --allow-root theme activate ${theme} || e
 	cwd => '/var/www/wp-content/themes',
 	user => 'root',
 } ->
-exec { "/usr/bin/wp --allow-root post delete $(/usr/bin/wp --allow-root post list --post_type='post' --format=ids)":
+exec { "[ ! $(/usr/bin/wp --allow-root post list --post_type='post' --post_status=any --format=ids) ] || /usr/bin/wp --allow-root post delete --force $(/usr/bin/wp --allow-root post list --post_type='post' --post_status=any --format=ids)":
 	require => Wp::Site['/var/www'],
 	cwd     => '/var/www',
 	user    => 'root'
 } ->
-exec { "/usr/bin/wp --allow-root post delete $(/usr/bin/wp --allow-root post list --post_type='page' --format=ids)":
+exec { "[ ! $(/usr/bin/wp --allow-root post list --post_type='page' --post_status=any --format=ids) ] || /usr/bin/wp --allow-root post delete --force $(/usr/bin/wp --allow-root post list --post_type='page' --post_status=any --format=ids)":
 	require => Wp::Site['/var/www'],
 	cwd     => '/var/www',
 	user    => 'root'

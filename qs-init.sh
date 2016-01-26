@@ -79,8 +79,11 @@ while :; do
             ;;
 
         *)
-			echo "\n\nERROR: Unknown parameter or bad parameter value detected: $1 $2\n"
-			exit 1
+            if [ "$1" ]; then
+				echo "\n\nERROR: Unknown parameter or bad parameter value detected: $1 $2\n"
+				exit 1
+            fi
+            break
     esac
 
     shift

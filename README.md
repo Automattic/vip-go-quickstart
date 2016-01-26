@@ -84,6 +84,18 @@ less +F /var/log/php/error.log
 
 N.B. The `less +F` command and option starts following the log file in the `less` file viewer, with new lines being appended as they are written to the log. To stop following the log, i.e. to stop new lines being appended in `less`, you can type `ctrl+c`, and to start again, you can type `F`.
 
+## Troubleshooting
+
+### Vagrant hangs during installation
+
+If the "Block all incoming connections" option is enabled, Vagrant hangs when mounting NFS and the VM will never work.
+
+To solve: 
+
+1. Navigate to System Preferences > Security & Privacy > Firewall > Firewall Options in your Mac
+2. Uncheck "Block all incoming connections"
+3. Check "Automatically allow signed software to receive incoming connections"
+
 # What You Get
 
 * Ubuntu 14.04

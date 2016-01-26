@@ -77,7 +77,8 @@ while :; do
             ;;
 
         *)
-           break
+			echo "\n\nERROR: Unknown parameter or bad parameter value detected: $1 $2\n"
+			exit 1
     esac
 
     shift

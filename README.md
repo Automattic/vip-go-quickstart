@@ -88,9 +88,9 @@ N.B. The `less +F` command and option starts following the log file in the `less
 
 ### Vagrant hangs during installation
 
-If the "Block all incoming connections" option is enabled, Vagrant hangs when mounting NFS and the VM will never work.
+In OS X's firewall, if the "Block all incoming connections" option is enabled, Vagrant hangs when mounting NFS and the VM will never start.
 
-To solve: 
+To solve:
 
 1. Navigate to System Preferences > Security & Privacy > Firewall > Firewall Options in your Mac
 2. Uncheck "Block all incoming connections"

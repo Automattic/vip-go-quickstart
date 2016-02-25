@@ -17,6 +17,8 @@ theme=0
 wxr=0
 needs_to_up=0
 
+# This while loop will go forever until we break out of it or exit, 
+# as the : operator aliases to `true`.
 while :; do
     case $1 in
         --client)
@@ -77,7 +79,11 @@ while :; do
             ;;
 
         *)
-           break
+            if [ "$1" ]; then
+				echo "\n\nERROR: Unknown parameter or bad parameter value detected: $1 $2\n"
+				exit 1
+            fi
+            break
     esac
 
     shift

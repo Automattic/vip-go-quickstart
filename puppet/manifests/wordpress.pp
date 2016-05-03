@@ -97,6 +97,9 @@ file_line { "Include client's vip-config.php":
 // e.g. in production, it will be `production`
 define( 'VIP_GO_ENV', 'vip-go-quickstart' );
 
+// The `vip-config.php` file contains any site specific
+// constants and other configuration that might normally
+// go into `wp-config.php`
 if ( file_exists( __DIR__ . '/../vip-config/vip-config.php' ) )
 	require_once( __DIR__ . '/../vip-config/vip-config.php' );",
 	match   => "^\\/\\* That's all, stop editing! Happy blogging\\. \\*\\/$",

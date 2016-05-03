@@ -95,8 +95,8 @@ file_line { "Include client's vip-config.php":
 
 // The `qs-config.php` file contains version controlled
 // Quickstart specific configuration
-if ( file_exists( __DIR__ . '/../misc/qs-config.php' ) )
-	require_once( __DIR__ . '/../misc/qs-config.php' );
+if ( file_exists( __DIR__ . '/../qs-misc/qs-config.php' ) )
+	require_once( __DIR__ . '/../qs-misc/qs-config.php' );
 
 // The `vip-config.php` file contains any site specific
 // constants and other configuration that might normally

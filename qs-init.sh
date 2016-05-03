@@ -8,6 +8,21 @@
 # Kicking things off!
 printf '\nPreparing to initialize the VIP Go Quickstart environment...\n\n'
 
+# Get the local and Git versions to compare
+QS_VERSION=`cat .version.txt`
+if [ -f .version-current.txt ]; then
+	QS_VERSION_CURRENT=`cat .version-current.txt`
+else
+	QS_VERSION_CURRENT=0
+fi
+
+if [ "$QS_VERSION" -gt "$QS_VERSION_CURRENT" ]; then
+	vagrant provision
+fi
+
+# Note the latest version we've updated to
+echo $QS_VERSION > .version-current.txt
+
 # Parse args and set necessary envars
 printf '1) Parsing arguments...\n\n'
 client=''

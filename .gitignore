@@ -1,2 +1,3 @@
 .vagrant
+.version-current.txt
 go-client-repo

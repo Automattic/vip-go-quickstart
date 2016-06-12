@@ -84,6 +84,10 @@ less +F /var/log/php/error.log
 
 N.B. The `less +F` command and option starts following the log file in the `less` file viewer, with new lines being appended as they are written to the log. To stop following the log, i.e. to stop new lines being appended in `less`, you can type `ctrl+c`, and to start again, you can type `F`.
 
+## Compatability with VIP Go
+
+VIP Go Quickstart is intended to be a quick local environment that includes the basics necessary for writing VIP-compatible code. We use system packages when they are available, to make maintenance easier, rather than compiling custom binaries that exactly replicate VIP Go. Additionally, we may intentionally change software versions ahead of VIP Go upgrades to help test comparability before it is upgraded ahead of production. Therefore, VIP Go Quickstart should not be used as an indication of software versions running in production. All code should be tested in a VIP Go staging or development environment before being pushed to production. If you have questions about specific software versions or packages running in production, please open a ticket with VIP support.
+
 ## Troubleshooting
 
 ### Vagrant hangs during installation

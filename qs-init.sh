@@ -13,6 +13,7 @@ Usage: $(basename "$0") --client UNIQUE_SLUG --git-repo GIT_REMOTE [--wxr WXR_TO
 	--git-repo	The location of the git repo we're going to work on next
 	--wxr		The location of a WXR if we have one to import
 	--up		Start the VM
+	--help		Output usage information
 	"
 }
 
@@ -105,6 +106,10 @@ while :; do
 		--up)
 			needs_to_up=1
 			;;
+			
+		--help)
+			usage
+			exit
 
 		*)
 			if [ "$1" ]; then

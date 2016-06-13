@@ -5,6 +5,17 @@
 ## Include `--up` when setting up a fresh instance of this VM.
 ##
 
+usage() {
+	echo "
+Usage: $(basename "$0") --client UNIQUE_SLUG --git-repo GIT_REMOTE [--wxr WXR_TO_IMPORT] [--theme DIRECTORY_NAME] [--up]
+
+	--client	The client slug of the site we're going to work on next
+	--git-repo	The location of the git repo we're going to work on next
+	--wxr		The location of a WXR if we have one to import
+	--up		Start the VM
+"
+}
+
 # Kicking things off!
 printf '\nPreparing to initialize the VIP Go Quickstart environment...\n\n'
 
@@ -43,6 +54,7 @@ while :; do
                 continue
             else
                 printf 'ERROR: "--client" is a required argument.\n' >&2
+                usage
                 exit 1
             fi
             ;;
@@ -54,6 +66,7 @@ while :; do
                 continue
             else
                 printf 'ERROR: "--git-repo" is a required argument.\n' >&2
+                usage
                 exit 1
             fi
             ;;
@@ -96,6 +109,7 @@ while :; do
         *)
             if [ "$1" ]; then
 				echo "\n\nERROR: Unknown parameter or bad parameter value detected: $1 $2\n"
+				usage
 				exit 1
             fi
             break
@@ -106,11 +120,13 @@ done
 
 if [ -z "$client" ]; then
     printf 'ERROR: "--client" is a required argument.\n' >&2
+    usage
     exit 1
 fi
 
 if [ -z "$client_git_repo" ]; then
     printf 'ERROR: "--git-repo" is a required argument.\n' >&2
+    usage
     exit 1
 fi
 
@@ -161,6 +177,7 @@ rm -rf go-client-repo-new/
 # Ensure theme directory exists, otherwise exit with an error
 if [ "$theme" != 0 ] && [ ! -d "./go-client-repo/themes/$theme" ]; then
     printf '\n\nERROR: Theme directory "%s" not found. Please check your entry, or omit the "--theme" argument, and try again.\n' "$theme" >&2
+    usage
     exit 1
 fi
 

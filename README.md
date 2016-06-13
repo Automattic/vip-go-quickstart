@@ -4,7 +4,7 @@
 
 # Overview
 
-VIP Go Quickstart is a local development environment for developers creating and maintaining sites on the WordPress.com VIP Go hosting platform. The goal is to provide developers with an environment which can be initialised quickly, along some tools we believe developers will find useful ([more info](#compatability-with-vip-go)).
+VIP Go Quickstart is a local development environment for developers creating and maintaining sites on the WordPress.com VIP Go hosting platform. The goal is to provide developers with an environment which can be initialised quickly, along with some tools we believe developers will find useful ([more info](#compatability-with-vip-go)).
 
 # How to use VIP Go Quickstart
 

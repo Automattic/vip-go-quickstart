@@ -110,6 +110,7 @@ while :; do
 		--help)
 			usage
 			exit
+			;;
 
 		*)
 			if [ "$1" ]; then

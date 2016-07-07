@@ -4,7 +4,7 @@
 
 # Overview
 
-VIP Go Quickstart is a local development environment for developers creating and maintaining sites on the WordPress.com VIP Go hosting platform. The goal is to provide developers with an environment that closely mirrors production environment, along with all the tools we recommend developers use.
+VIP Go Quickstart is a local development environment for developers creating and maintaining sites on the WordPress.com VIP Go hosting platform. The goal is to provide developers with an environment which can be initialised quickly, along with some tools we believe developers will find useful ([more info](#compatability-with-vip-go)).
 
 # How to use VIP Go Quickstart
 
@@ -83,6 +83,12 @@ less +F /var/log/php/error.log
 ```
 
 N.B. The `less +F` command and option starts following the log file in the `less` file viewer, with new lines being appended as they are written to the log. To stop following the log, i.e. to stop new lines being appended in `less`, you can type `ctrl+c`, and to start again, you can type `F`.
+
+## Compatability with VIP Go
+
+VIP Go Quickstart is a local environment which allows you to get up and running, writing VIP-compatible code, as quickly as possible. We use system packages when they are available, to make maintenance easier, rather than compiling custom binaries that exactly replicate VIP Go. Additionally, we may intentionally change software versions ahead of VIP Go upgrades to help test comparability before we make the upgrade in production. 
+
+VIP Go Quickstart should not be used as an indication of software versions running in production. All code should be tested in a VIP Go staging or development environment before being pushed to production. If you have questions about specific software versions or packages running in production, please open a ticket with VIP support.
 
 ## Troubleshooting
 

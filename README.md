@@ -1,6 +1,6 @@
 ![VIP Go Quickstart](http://vip.wordpress.com/wp-content/themes/a8c/wpcomvip3/img/illustrations/developmenttools-03.svg)
 
-**THIS PROJECT IS A WORK IN PROGRESS, AND IS NOT YET READY FOR PRODUCTION**
+**THIS PROJECT IS DEPRECATED, WE RECOMMEND USING [VVV](https://github.com/Varying-Vagrant-Vagrants/VVV) WITH [VIP GO MU-PLUGINS](http://github.com/automattic/vip-go-mu-plugins)**
 
 # Overview
 
